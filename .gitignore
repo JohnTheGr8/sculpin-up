@@ -1,0 +1,3 @@
+.vagrant
+www/output_*
+www/vendor/
