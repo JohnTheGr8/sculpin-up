@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "setup_system.sh"
 
+  config.vm.provision "shell", path: "setup_sculpin.sh", privileged: false
+
   config.vm.synced_folder "www/", "/home/vagrant/www", create: true
 
   config.vm.provision "shell", inline: "fuser -k 80/tcp && service nginx restart", run: "always"
