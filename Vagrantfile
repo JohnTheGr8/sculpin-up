@@ -7,5 +7,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: "192.168.56.100", adapter: 2
 
+  config.vm.provision "shell", path: "setup_system.sh"
+
   config.vm.synced_folder "www/", "/home/vagrant/www", create: true
+
+  config.vm.provision "shell", inline: "fuser -k 80/tcp && service nginx restart", run: "always"
 end
